@@ -1,6 +1,18 @@
+def getN():
+    try:
+        maxNumbers = input()
+        return int(maxNumbers)
+    except:
+        raise ValueError(f"Recieved {type(maxNumbers)} => Expected type Integer")
+
+def ensureEven(number):
+    if number % 2 == 0:
+        return number
+    raise ValueError("'N' must be an even integer")
+
 def getInput():
     arrayOfInput = []
-    maxNumbers = int(input())
+    maxNumbers = ensureEven(getN())
     for _ in range(maxNumbers):
         arrayOfInput.append(input())
     return maxNumbers, arrayOfInput
