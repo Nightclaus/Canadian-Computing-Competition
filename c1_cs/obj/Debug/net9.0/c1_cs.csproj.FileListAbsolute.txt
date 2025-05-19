@@ -1,0 +1,15 @@
+/Users/zhong_st/CCC_S1/c1_cs/obj/Debug/net9.0/c1_cs.GeneratedMSBuildEditorConfig.editorconfig
+/Users/zhong_st/CCC_S1/c1_cs/obj/Debug/net9.0/c1_cs.AssemblyInfoInputs.cache
+/Users/zhong_st/CCC_S1/c1_cs/obj/Debug/net9.0/c1_cs.AssemblyInfo.cs
+/Users/zhong_st/CCC_S1/c1_cs/obj/Debug/net9.0/c1_cs.csproj.CoreCompileInputs.cache
+/Users/zhong_st/CCC_S1/c1_cs/obj/Debug/net9.0/c1_cs.sourcelink.json
+/Users/zhong_st/CCC_S1/c1_cs/bin/Debug/net9.0/c1_cs
+/Users/zhong_st/CCC_S1/c1_cs/bin/Debug/net9.0/c1_cs.deps.json
+/Users/zhong_st/CCC_S1/c1_cs/bin/Debug/net9.0/c1_cs.runtimeconfig.json
+/Users/zhong_st/CCC_S1/c1_cs/bin/Debug/net9.0/c1_cs.dll
+/Users/zhong_st/CCC_S1/c1_cs/bin/Debug/net9.0/c1_cs.pdb
+/Users/zhong_st/CCC_S1/c1_cs/obj/Debug/net9.0/c1_cs.dll
+/Users/zhong_st/CCC_S1/c1_cs/obj/Debug/net9.0/refint/c1_cs.dll
+/Users/zhong_st/CCC_S1/c1_cs/obj/Debug/net9.0/c1_cs.pdb
+/Users/zhong_st/CCC_S1/c1_cs/obj/Debug/net9.0/c1_cs.genruntimeconfig.cache
+/Users/zhong_st/CCC_S1/c1_cs/obj/Debug/net9.0/ref/c1_cs.dll
