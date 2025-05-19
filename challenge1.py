@@ -1,14 +1,18 @@
-arrayOfInput = []
-maxNumbers = int(input())
-for _ in range(maxNumbers):
-    arrayOfInput.append(input())
+def getInput():
+    arrayOfInput = []
+    maxNumbers = int(input())
+    for _ in range(maxNumbers):
+        arrayOfInput.append(input())
+    return maxNumbers, arrayOfInput
 
-radius = maxNumbers // 2
-halfTheList = arrayOfInput[:radius]
+def process(radius, halfTheList, originalList):
+    totalWatchers = 0
+    for index, value in enumerate(halfTheList):
+        if value == originalList[index+radius]:
+            totalWatchers += 2
+    return totalWatchers
 
-total = 0
-for index, value in enumerate(halfTheList):
-    if value == arrayOfInput[index+radius]:
-        total += 2
-
-print(total)
+N,H = getInput()
+radius = N // 2
+halfTheList = H[:radius]
+print(process(radius, halfTheList, H))
