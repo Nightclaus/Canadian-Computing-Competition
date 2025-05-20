@@ -32,18 +32,18 @@ sports_dict = {
     "Ping Pong": "Only Aus Baraam would play this sport"
 }
 
-def getMatchFromSlice(slice, original):
-    amountOfCorrect = 0
-    negativeOffset = 0
+def getMatchFromSlice(slice, original, correctionOffset):
+    numOfCorrect = 0
+    totalOffset = 0
     try:
         for index, letter in enumerate(slice.lower()):
-            if letter == original[index - negativeOffset]:
-                amountOfCorrect+=1
+            if letter == original[index + totalOffset]:
+                numOfCorrect+=1
             else:
-                negativeOffset += 1
+                totalOffset += correctionOffset
     except:
         pass
-    return amountOfCorrect / len(slice)
+    return numOfCorrect / len(slice) # Percentage correct as decimal
 
 def getHighestItem(array):
     highestIndex = 0 # Current Highest Index
@@ -55,13 +55,15 @@ def getHighestItem(array):
     return highestIndex, highestValue
 
 while True:
-    matching = []
+    vector = []
     keyed_list = list(sports_dict.keys())
     value_list = list(sports_dict.values())
 
     baraam = input("What is your favourite sport? ").lower()
     for sport in sports_dict:
-        matching.append(getMatchFromSlice(sport, baraam))
-    hi, hv = getHighestItem(matching)
-
+        negativeOffseted = getMatchFromSlice(sport, baraam, -1)
+        positiveOffseted = getMatchFromSlice(sport, baraam, 1)
+        vector.append(negativeOffseted if negativeOffseted > positiveOffseted else positiveOffseted)
+        
+    hi, hv = getHighestItem(vector)
     print(f"I am {round(hv*100, 2)}% sure you are talking about {keyed_list[hi]}, {value_list[hi]}\n")
