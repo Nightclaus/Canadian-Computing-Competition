@@ -32,7 +32,7 @@ sports_dict = {
     "Ping Pong": "Only Aus Baraam would play this sport"
 }
 
-def getMatch(slice, original):
+def getMatchFromSlice(slice, original):
     amountOfCorrect = 0
     negativeOffset = 0
     try:
@@ -45,24 +45,23 @@ def getMatch(slice, original):
         pass
     return amountOfCorrect / len(slice)
 
+def getHighestItem(array):
+    highestIndex = 0 # Current Highest Index
+    highestValue = 0 # Current Highest Value
+    for index, value in enumerate(array):
+        if value > highestValue:
+            highestValue = value
+            highestIndex = index
+    return highestIndex, highestValue
+
 while True:
     matching = []
-    sportValues = []
-    sports = []
+    keyed_list = list(sports_dict.keys())
+    value_list = list(sports_dict.values())
 
-    b = input("What is your favourite sport? ").lower()
+    baraam = input("What is your favourite sport? ").lower()
     for sport in sports_dict:
-        amountOfCorrect = 0
-        k = getMatch(sport, b)
-        matching.append(k)
-        sportValues.append(sports_dict[sport])
-        sports.append(sport)
+        matching.append(getMatchFromSlice(sport, baraam))
+    hi, hv = getHighestItem(matching)
 
-    currentHighestIndex = 1
-    currentHighest = 0
-    for index, value in enumerate(matching):
-        if value > currentHighest:
-            currentHighest = value
-            currentHighestIndex = index
-
-    print(f"I am {round(currentHighest*100, 2)}% sure you are talking about {sports[currentHighestIndex]}, {sportValues[currentHighestIndex]}")
+    print(f"I am {round(hv*100, 2)}% sure you are talking about {keyed_list[hi]}, {value_list[hi]}\n")
