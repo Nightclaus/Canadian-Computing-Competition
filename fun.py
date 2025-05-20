@@ -32,6 +32,19 @@ sports_dict = {
     "Ping Pong": "Only Aus Baraam would play this sport"
 }
 
+def getMatch(slice, original):
+    amountOfCorrect = 0
+    negativeOffset = 0
+    try:
+        for index, letter in enumerate(slice.lower()):
+            if letter == original[index - negativeOffset]:
+                amountOfCorrect+=1
+            else:
+                negativeOffset += 1
+    except:
+        pass
+    return amountOfCorrect / len(slice)
+
 while True:
     matching = []
     sportValues = []
@@ -40,13 +53,8 @@ while True:
     b = input("What is your favourite sport? ").lower()
     for sport in sports_dict:
         amountOfCorrect = 0
-        try:
-            for index, letter in enumerate(sport.lower()):
-                if letter == b[index]:
-                    amountOfCorrect+=1
-        except:
-            pass
-        matching.append(amountOfCorrect / len(sport))
+        k = getMatch(sport, b)
+        matching.append(k)
         sportValues.append(sports_dict[sport])
         sports.append(sport)
 
