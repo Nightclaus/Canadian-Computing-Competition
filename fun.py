@@ -43,11 +43,13 @@ def getMatchFromSlice(slice, original, correctionOffset):
                 totalOffset += correctionOffset
     except:
         pass
+    if numOfCorrect==1 and not (slice.lower()[0] == original[0]): # Single letter match is inaccurate unless it is the first letter
+        return 0
     return numOfCorrect / len(slice) # Percentage correct as decimal
 
 def getHighestItem(array):
     highestIndex = 0 # Current Highest Index
-    highestValue = 0 # Current Highest Value
+    highestValue = -1 # Current Highest Value
     for index, value in enumerate(array):
         if value > highestValue:
             highestValue = value
@@ -61,9 +63,15 @@ while True:
 
     baraam = input("What is your favourite sport? ").lower()
     for sport in sports_dict:
-        negativeOffseted = getMatchFromSlice(sport, baraam, -1)
-        positiveOffseted = getMatchFromSlice(sport, baraam, 1)
-        vector.append(negativeOffseted if negativeOffseted > positiveOffseted else positiveOffseted)
-        
+        _, bestValue = getHighestItem([
+            getMatchFromSlice(sport, baraam, -1), # Negative Offset
+            getMatchFromSlice(sport, baraam, 1),  # Positive Offset
+            getMatchFromSlice(sport, baraam, 0)   # Zero Offset
+        ])
+        vector.append(bestValue)
+
     hi, hv = getHighestItem(vector)
-    print(f"I am {round(hv*100, 2)}% sure you are talking about {keyed_list[hi]}, {value_list[hi]}\n")
+    if hi==0 and hv==0: # Only single letter matches
+        print("I am not sure about that sport.\n")
+    else:
+        print(f"I am {round(hv*100, 2)}% sure you are talking about {keyed_list[hi]}, {value_list[hi]}\n")
