@@ -1,8 +1,9 @@
-import java.util.Scanner;
-import java.util.List;
+package challenge_1;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-class Main {
+class challenge1 {
     public static Scanner potato = new Scanner(System.in);
 
     static String input(String text) {
