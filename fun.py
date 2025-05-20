@@ -29,7 +29,8 @@ sports_dict = {
     "Rowing": "Teamwork, rhythm, and maximum quad burn.",
     "Equestrian": "Letting a horse do the work while you wear fancy hats.",
     "Ultimate Frisbee": "Hippie football with a plastic disc of doom.",
-    "Ping Pong": "Only Aus Baraam would play this sport"
+    "Ping Pong": "Only Aus Baraam would play this sport",
+    "Gym": "Rocco Ianni's hideout"
 }
 
 def getMatchFromSlice(slice, original, correctionOffset):
@@ -43,7 +44,7 @@ def getMatchFromSlice(slice, original, correctionOffset):
                 totalOffset += correctionOffset
     except:
         pass
-    if numOfCorrect==1 and not (slice.lower()[0] == original[0]): # Single letter match is inaccurate unless it is the first letter
+    if numOfCorrect==1 and (not (slice.lower()[0] == original[0]) or correctionOffset==0): # Single letter match is inaccurate unless it is the first letter | If correctional offset is neutral, ignore, other offsets will calculate this in its place
         return 0
     return numOfCorrect / len(slice) # Percentage correct as decimal
 
@@ -63,10 +64,11 @@ while True:
 
     baraam = input("What is your favourite sport? ").lower()
     for sport in sports_dict:
+        zeroed = getMatchFromSlice(sport, baraam, 0)
         _, bestValue = getHighestItem([
-            getMatchFromSlice(sport, baraam, -1), # Negative Offset
-            getMatchFromSlice(sport, baraam, 1),  # Positive Offset
-            getMatchFromSlice(sport, baraam, 0)   # Zero Offset
+            getMatchFromSlice(sport, baraam, -1),                                       # Negative Offset
+            getMatchFromSlice(sport, baraam, 1),                                        # Positive Offset
+            zeroed*2 if zeroed <= 0.3 or zeroed >= 0.6 and zeroed <=0.95 else zeroed    # Zero Offset # Give bonus to continueous lines
         ])
         vector.append(bestValue)
 
